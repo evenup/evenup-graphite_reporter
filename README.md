@@ -15,13 +15,14 @@ Requirements
 Installation & Usage
 --------------------
 
-1.  Install puppet-graphite as a module in your Puppet master's module
-    path.
+1.  Install puppet_graphite as a module in your Puppet master's module path.
 
-2.  Update the `graphite_server` and `graphite_port` variables in the `graphite.yaml` file with 
-    your Graphite server IP and port and copy the file to `/etc/puppet/`. An example file is included.
+2.  Include the puppuet class:
+        class { 'puppet_graphite':
+          graphite_host =>  'graphite.mycompany.com'
+        }
 
-3.  Enable pluginsync and reports on your master and clients in `puppet.conf`
+3.  Enable pluginsync (default on puppet => 3.0) and reports on your master and clients in `puppet.conf`
 
         [master]
         report = true
@@ -36,7 +37,8 @@ Installation & Usage
 Author
 ------
 
-Naresh V. <nareshov@gmail.com>
+Justin Lambert <jlambert@letsevenup.com>
+Forked from [puppet-graphite](https://github.com/nareshov/puppet-graphite) by Naresh V. <nareshov@gmail.com>
 Derived from [puppet-ganglia](https://github.com/jamtur01/puppet-ganglia) by James Turnbull <james@lovedthanlost.net>
 
 Original License
@@ -44,6 +46,10 @@ Original License
 
     Author:: James Turnbull (<james@lovedthanlost.net>)
     Copyright:: Copyright (c) 2011 James Turnbull
+    License:: Apache License, Version 2.0
+
+    Author:: Naresh V. (<nareshov@gmail.com>)
+    Copyright:: Copyright (c) 2011 Naresh V.
     License:: Apache License, Version 2.0
 
     Licensed under the Apache License, Version 2.0 (the "License");
@@ -62,6 +68,6 @@ License of this derived work
 ----------------------------
 
     Same as above plus:
-    Author:: Naresh V. (<nareshov@gmail.com>)
-    Copyright:: Copyright (c) 2011 Naresh V.
+    Author:: Justin Lambert. (<jlambert@letsevenup.com>)
+    Copyright:: Copyright (c) 2013 EvenUp.
     License:: Apache License, Version 2.0
