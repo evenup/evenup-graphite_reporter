@@ -17,7 +17,8 @@ Installation & Usage
 
 1.  Install puppet_graphite as a module in your Puppet master's module path.
 
-2.  Include the puppuet class:
+2.  Include the puppet class:
+
         class { 'puppet_graphite':
           graphite_host =>  'graphite.mycompany.com'
         }
