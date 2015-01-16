@@ -41,12 +41,12 @@
 #
 #
 class graphite_reporter (
-  $graphite_host  = '127.0.0.1',
-  $graphite_port  = 2003,
-  $config_file    = '/etc/puppet/graphite.yaml',
-  $config_owner   = 'puppet',
-  $config_group   = 'puppet',
-){
+  $graphite_host  = $graphite_reporter::params::graphite_host,
+  $graphite_port  = $graphite_reporter::params::graphite_port,
+  $config_file    = $graphite_reporter::params::config_file,
+  $config_owner   = $graphite_reporter::params::config_owner,
+  $config_group   = $graphite_reporter::params::config_group,
+) inherits graphite_reporter::params {
 
   file { $config_file:
     ensure  => file,
