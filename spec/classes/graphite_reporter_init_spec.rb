@@ -1,6 +1,7 @@
 require 'spec_helper'
 
 describe 'graphite_reporter', :type => :class do
+  let (:facts) {{ :is_pe => false }}
   it { should create_class('graphite_reporter') }
 
   context 'when being applied on pe' do
