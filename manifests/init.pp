@@ -38,10 +38,16 @@ class graphite_reporter (
   $config_file    = '/etc/puppet/graphite.yaml',
 ){
 
+  if $::is_pe {
+    $user_group = 'pe_puppet'
+  } else {
+    $user_group = 'puppet'
+  }
+
   file { $config_file:
     ensure  => file,
-    owner   => 'puppet',
-    group   => 'puppet',
+    owner   => $user_group,
+    group   => $user_group,
     mode    => '0444',
     content => template('graphite_reporter/graphite.yaml.erb'),
   }
