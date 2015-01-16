@@ -17,6 +17,14 @@
 #   String.  Path to write the config file to
 #   Default: /etc/puppet/graphite.yaml
 #
+# [*config_owner*]
+#   String.  Owner of the config file. Should be pe_puppet for Puppet Enterprise.
+#   Default: puppet
+#
+# [*config_group*]
+#   String.  The config file's group. Should be pe_puppet for Puppet Enterprise.
+#   Default: puppet
+#
 #
 # === Examples
 #
@@ -33,15 +41,17 @@
 #
 #
 class graphite_reporter (
-  $graphite_host  = '127.0.0.1',
-  $graphite_port  = 2003,
-  $config_file    = '/etc/puppet/graphite.yaml',
-){
+  $graphite_host  = $graphite_reporter::params::graphite_host,
+  $graphite_port  = $graphite_reporter::params::graphite_port,
+  $config_file    = $graphite_reporter::params::config_file,
+  $config_owner   = $graphite_reporter::params::config_owner,
+  $config_group   = $graphite_reporter::params::config_group,
+) inherits graphite_reporter::params {
 
   file { $config_file:
     ensure  => file,
-    owner   => 'puppet',
-    group   => 'puppet',
+    owner   => $config_owner,
+    group   => $config_group,
     mode    => '0444',
     content => template('graphite_reporter/graphite.yaml.erb'),
   }
