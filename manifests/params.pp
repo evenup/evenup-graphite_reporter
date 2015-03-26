@@ -1,3 +1,7 @@
+# Class graphite_reporter::params
+#
+# Default parameters for graphite_reporter module
+#
 class graphite_reporter::params {
   $graphite_host = '127.0.0.1'
   $graphite_port = 2003
