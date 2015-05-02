@@ -9,7 +9,7 @@ describe 'graphite_reporter', :type => :class do
     it { should contain_file('/etc/puppetlabs/puppet/graphite.yaml').with(
         :owner => 'pe_puppet',
         :group => 'pe_puppet',
-        :mode  => '0444',
+        :mode  => '0444'
       )}
   end
 
@@ -18,7 +18,7 @@ describe 'graphite_reporter', :type => :class do
     it { should contain_file('/etc/puppet/graphite.yaml').with(
         :owner => 'puppet',
         :group => 'puppet',
-        :mode  => '0444',
+        :mode  => '0444'
       )}
 
   end
