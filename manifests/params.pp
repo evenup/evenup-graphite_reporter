@@ -10,7 +10,7 @@ class graphite_reporter::params {
   $graphite_suffix = 'puppet'
   $graphite_reverse_hostname = true
 
-  if $::is_pe {
+  if str2bool($::is_pe) {
     $config_file  = '/etc/puppetlabs/puppet/graphite.yaml'
     $config_owner = 'pe_puppet'
     $config_group = 'pe_puppet'

@@ -1,4 +1,8 @@
 fixtures:
+  forge_modules:
+    stdlib:
+      repo: "puppetlabs/stdlib"
+      ref: "4.1.0"  
   symlinks:
     graphite_reporter: "#{source_dir}"
 
