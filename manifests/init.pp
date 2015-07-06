@@ -46,6 +46,10 @@ class graphite_reporter (
   $config_file    = $graphite_reporter::params::config_file,
   $config_owner   = $graphite_reporter::params::config_owner,
   $config_group   = $graphite_reporter::params::config_group,
+
+  $graphite_prefix           = $graphite_reporter::params::graphite_prefix,
+  $graphite_suffix           = $graphite_reporter::params::graphite_suffix,
+  $graphite_reverse_hostname = $graphite_reporter::params::graphite_reverse_hostname,
 ) inherits graphite_reporter::params {
 
   file { $config_file:

@@ -6,6 +6,10 @@ class graphite_reporter::params {
   $graphite_host = '127.0.0.1'
   $graphite_port = 2003
 
+  $graphite_prefix = undef
+  $graphite_suffix = 'puppet'
+  $graphite_reverse_hostname = true
+
   if $::is_pe {
     $config_file  = '/etc/puppetlabs/puppet/graphite.yaml'
     $config_owner = 'pe_puppet'
