@@ -11,6 +11,7 @@ Requirements
 
 * `Puppet`
 * A [Graphite](http://graphite.wikidot.com/) server
+* puppetlabs/stdlib (>= 4.0.0) module
 
 Installation & Usage
 --------------------
