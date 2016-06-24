@@ -13,6 +13,7 @@ Puppet::Reports.register_report(:graphite) do
   GRAPHITE_PREFIX = config[:graphite_prefix]
   GRAPHITE_SUFFIX = config[:graphite_suffix]
   GRAPHITE_REVERSE_HOSTNAME = config[:graphite_reverse_hostname]
+  GRAPHITE_FLATTEN_HOSTNAME = config[:graphite_flatten_hostname]
 
   desc <<-DESC
   Send notification of failed reports to a Graphite server via socket.
@@ -26,25 +27,29 @@ Puppet::Reports.register_report(:graphite) do
 
   def process
     Puppet.debug "Sending status for #{self.host} to Graphite server at #{GRAPHITE_SERVER}"
-    
+
     prefix_parts = Array.new
-    
+
     if GRAPHITE_PREFIX != nil
       prefix_parts.push GRAPHITE_PREFIX
     end
 
+    hostname = self.host
     if GRAPHITE_REVERSE_HOSTNAME
-      prefix_parts.push self.host.split(".").reverse.join(".")
-    else
-      prefix_parts.push self.host
+      hostname =  hostname.split(".").reverse.join(".")
     end
-    
+
+    if GRAPHITE_FLATTEN_HOSTNAME
+      hostname = hostname.gsub(".", "_")
+    end
+    prefix_parts.push hostname
+
     if GRAPHITE_SUFFIX != nil
       prefix_parts.push GRAPHITE_SUFFIX
     end
-    
+
     prefix = prefix_parts.join(".")
-        
+
     epochtime = Time.now.utc.to_i
     self.metrics.each { |metric,data|
       data.values.each { |val| 

@@ -9,6 +9,7 @@ class graphite_reporter::params {
   $graphite_prefix = undef
   $graphite_suffix = 'puppet'
   $graphite_reverse_hostname = true
+  $graphite_flatten_hostname = false
 
   if str2bool($::is_pe) {
     $config_file  = '/etc/puppetlabs/puppet/graphite.yaml'
