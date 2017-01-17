@@ -20,7 +20,7 @@ Installation & Usage
 
 2.  Include the puppet class:
 
-        class { 'puppet_graphite':
+        class { 'graphite_reporter':
           graphite_host =>  'graphite.mycompany.com'
         }
 

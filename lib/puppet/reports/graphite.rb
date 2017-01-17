@@ -26,9 +26,9 @@ Puppet::Reports.register_report(:graphite) do
 
   def process
     Puppet.debug "Sending status for #{self.host} to Graphite server at #{GRAPHITE_SERVER}"
-    
+
     prefix_parts = Array.new
-    
+
     if GRAPHITE_PREFIX != nil
       prefix_parts.push GRAPHITE_PREFIX
     end
@@ -38,16 +38,16 @@ Puppet::Reports.register_report(:graphite) do
     else
       prefix_parts.push self.host
     end
-    
+
     if GRAPHITE_SUFFIX != nil
       prefix_parts.push GRAPHITE_SUFFIX
     end
-    
+
     prefix = prefix_parts.join(".")
-        
+
     epochtime = Time.now.utc.to_i
     self.metrics.each { |metric,data|
-      data.values.each { |val| 
+      data.values.each { |val|
         name = "#{prefix}.#{val[1]}.#{metric}"
         value = val[2]
 
