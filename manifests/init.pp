@@ -25,6 +25,20 @@
 #   String.  The config file's group. Should be pe_puppet for Puppet Enterprise.
 #   Default: puppet
 #
+# [*graphite_prefix*]
+#   String. Prefix added to the metric name before hostname.
+#   When set to undef of 'absent' it's not added to config file.
+#   Default: undef
+#
+# [*graphite_suffix*]
+#   String. Suffix added to the metric name after hostname.
+#   When set to undef of 'absent' it's not added to config file.
+#   Default: 'puppet'
+#
+# [*graphite_reverse_hostname*]
+#   Boolean. When true the hostname is reversed in metric name.
+#   Default: true
+#
 #
 # === Examples
 #
